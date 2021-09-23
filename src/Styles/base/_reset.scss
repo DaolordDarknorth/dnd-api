@@ -1,0 +1,127 @@
+**::after,*::before{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+    background: transparent;
+}
+main,article,aside,figure,footer,
+header,nav,section,details,summary{
+display: block;
+}
+//box sizing is more consistant when inherited from a parent element
+html{
+    box-sizing: border-box;
+}
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+//height auto may mess up if you dont have full control over the images
+img,object,embed{
+    max-width: 100%;
+    height: auto;
+}
+// forces the vertical scroll bar to prevent a jumpy page
+html{
+    overflow-y: scroll;
+}
+ul{
+    list-style: none;
+}
+blockquote,q{
+    quotes: none;
+}
+blockquote::before,blockquote::after,q::before,q::after{
+    content: "";
+    content:none;
+}
+del{
+    text-decoration: line-through;
+}
+abbr[title],dfn[title]{
+    border-bottom: 1px dotted black;
+    cursor: pointer;
+}
+table{
+    border-collapse: separate;
+    border-spacing: 0;
+}
+th{
+    font-weight: bold;
+    vertical-align: bottom;
+}
+td{
+    font-weight: normal;
+    vertical-align: top;
+}
+hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+input, select{
+    vertical-align: middle;
+}
+pre{
+    white-space: pre;//css 2
+    white-space: pre-wrap;//css 2.1
+    white-space: pre-line;//css3
+    word-wrap: break-word;//IE
+}
+input[type='radio']{
+    vertical-align: text-bottom;
+}
+input[type='checkbox']{
+    vertical-align: bottom;
+}
+.ie7 input[type='radio']{
+    vertical-align: baseline;
+}
+.ie6 input[type='checkbox']{
+    vertical-align: text-bottom;
+}
+
+select,input,textarea{
+    font: 90% sans-serif;
+}
+small{
+    font-size: 85%;
+}
+strong{
+    font-weight: bold;
+}
+//make shure that super/subtext dont mess with line heights
+sub,sup{
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+}
+sup{
+    top: -0.5em;
+}
+sub{
+    bottom: -0.25em
+}
+.clickable,lable,input[type='button'],input[type='submit'],input[type='file']{
+    cursor: pointer;
+}
+//make buttons play nice with ie7
+button,input[tpye='button']{
+    width: auto;
+    overflow: visable;
+}
+.ie7 img{
+    -ms-interpolation-mode: bicubic;
+}
+//container collapse fix
+// if you use float, sometime the containter will not appear bc nothing in it
+ .clearfix::after{
+     content:" ";
+     display: block;
+     clear:both
+}

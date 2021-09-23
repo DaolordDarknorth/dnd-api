@@ -1,0 +1,185 @@
+//shortcut to senter any block element
+
+@mixin center-auto {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+
+}
+
+//simple way to define a box
+@mixin box($width, $height:$width){
+    width:$width;
+    height:$height;
+}
+@mixin cover-background {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+//flexbox toolkit
+@mixin flex-column {
+   display: flex;
+   flex-direction: column; 
+}
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex-center-column {
+    @include flex-center();
+    flex-direction: column;
+}
+@mixin psudo(
+$width:100%,
+$height:100%,
+$display:block,
+$pos:absolute,
+$content:""
+){
+    content:$content,;
+    display:$display;
+    position:$pos;
+    @include box($width,$height);
+}
+@mixin position($position, $args) {
+    @each $pos in top right bottom left{
+        $i: index($args, $pos);
+        @if $i and $i + 1 <= length($args) and type-of(nth($args,$i+1)){
+            #{$pos}: nth($args,$li +1)
+        }
+    }
+    position: $position;
+}
+@mixin absolute($args:" "){
+    @include position(absolute, $args)
+}
+@mixin fixed($args:" "){
+    @include position(fixed, $args)
+}
+@mixin relative($args:" "){
+    @include position(relative, $args)
+}
+
+$phone:480px;
+$phablet:560px;
+$tablet-small:640px;
+$tablet: 768px;
+$large: 1024px;
+$desktop: 1280px;
+$desktop-wide:1440;
+
+@mixin tablet {
+    @media only screen and (min-width: $tablet){
+        @content;
+    }
+}
+@mixin phone {
+    @media only screen and (min-width: $phone){
+        @content;
+    }
+}
+@mixin large {
+    @media only screen and (min-width: $large){
+        @content;
+    }
+}
+@mixin desktop {
+    @media only screen and (min-width: $desktop){
+        @content;
+    }
+}
+@mixin fade($type){
+    @if $type =="hide"{
+        visibility: hidden;
+        opacity: 0;
+        transition: $transition;
+    }
+    @else if $type == "show"{
+        visibility: visible;
+        opacity: 1;
+        transition: $transition;
+    }
+}
+//mixin for input-placeholder colors
+@mixin input-placeholder {
+    &.placeholder{
+        @content;
+    }
+    &:-moz-placeholder{
+        @content;
+    }
+    &::-moz-placeholder{
+        @content;
+    }
+    &:-ms-input-placeholder{
+        @content;
+    }
+    &::-ms-input-placeholder{
+        @content;
+    }
+}
+@mixin font-face($font-name,$file-name,$weight:normal,$style:normal) {
+    @font-face {
+        font-family: quote($font-name);
+        src: url($filename + ".eot");
+        src: url($filename + ".eot?#iefix") format("embedded-opentype"),
+        url($file-name + ".woff") format("woff"),
+        url($file-name + ".ttf") format("truetype"),
+        url($file-name + ".svg") format("svg");
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+// form{
+//     @include font-face("MyFont", './base/typogrophy/myfont.ttf', $style: underline, )
+// }
+@mixin text-short {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+//creating css triangles
+@mixin css-triangle(
+    $color,
+    $direction,
+    $size:6px,
+    $position:absolute,
+    $round:false
+) {
+    @include psudo($pos: $position);
+    width: 0;
+    height: 0;
+    @if $round{
+        border-radius: 3px;
+    }
+    @if $direction == down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0 - round($size /2.5);
+    }
+    @else if $direction == up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round($size /2.5);
+    }
+    @else if $direction == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: 0 - round($size /2.5);
+    }
+    @else if $direction == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: 0 - round($size /2.5);
+    }
+}
+menu.li{
+    @include css-triangle(red, right, 12px)
+}
