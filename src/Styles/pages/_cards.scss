@@ -1,0 +1,33 @@
+@use '../themes/defaultTheme'as *;
+@use '../util/mixins'as *;
+@use '../util/variables'as *;
+
+.Search-page{
+    font-family: 'Times New Roman', Times, serif;
+    color: khaki;
+    .search-nav{
+        font-family: 'Times New Roman', Times, serif;
+        .search-bar{
+            font-family: 'Times New Roman', Times, serif;
+        }
+    }
+
+    .search-results{
+        font-family: 'Times New Roman', Times, serif;
+        .g-4{
+            font-family: 'Times New Roman', Times, serif;
+            .asso-cards{
+                
+                .card-body{ 
+                    width: 150px;
+                    height: 250px;
+                    background-color: red;
+                    padding: 0 0 0 0;
+                    margin: 0 0 0 0;
+                }
+                font-family: 'Times New Roman', Times, serif;
+            }
+        }
+    }
+
+}

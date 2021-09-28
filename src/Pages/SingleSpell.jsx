@@ -1,6 +1,7 @@
-import React from 'react'
-import { useFetch } from '../Util/useFetch'
+import React from 'react';
+import { useFetch } from '../Util/useFetch';
 import { Link } from 'react-router-dom';
+
 
 const SingleSpell = () => {
     console.log(window.location.pathname);
@@ -9,6 +10,7 @@ const SingleSpell = () => {
     console.log(spell);
     return (
         <div>
+            
             <h3>{name}</h3>
             <p>{components}</p>
             <Link to='/'>
@@ -18,4 +20,4 @@ const SingleSpell = () => {
     )
 }
 
-export default SingleSpell
+export default SingleSpell;

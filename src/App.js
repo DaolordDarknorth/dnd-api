@@ -1,7 +1,6 @@
 import { Home } from "./Pages/Home";
 import { Switch, Route } from 'react-router-dom'
 import SingleSpell from "./Pages/SingleSpell";
-
 function App() {
   return (
     <div>
